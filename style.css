@@ -98,6 +98,7 @@ a:hover {
     background-color: white;
     width: fit-content;
     max-height: 0;
+    z-index: 1000; /* << ΠΟΛΥ ΣΗΜΑΝΤΙΚΟ */
     overflow: hidden;
     transform: all 0.3 ease-in-out;
 
@@ -230,68 +231,66 @@ section {
     height: 2rem;
 }
 
-/* BUTTONS */
-
+/* BUTTON CONTAINER */
 .btn-container {
-    display: -webkit-flex; /* Safari prefix */
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
+  display: -webkit-flex; /* Safari support */
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
-.btn {
-    font-weight: 600;
-    -webkit-transition: all 400ms ease; /* Safari prefix */
-    transition: all 400ms ease;
-    padding: 1rem;
-    width: 8rem;
-    border-radius: 2rem;
+/* ΓΕΝΙΚΟ ΣΤΥΛ BUTTON */
+.btn,
+input[type="submit"],
+button[type="submit"] {
+  font-weight: 600;
+  -webkit-transition: all 400ms ease; /* Safari prefix */
+  transition: all 400ms ease;
+  padding: 1rem;
+  width: 8rem;
+  border-radius: 2rem;
+  -webkit-appearance: none;
+  appearance: none;
+  border: rgb(53, 53, 53) 0.1rem solid;
+  background: none;
+  color: black; /* Για να φαίνεται το κείμενο */
+  cursor: pointer;
 }
 
-.btn-color-1, .btn-color-2 {
-    border: rgb(53, 53, 53) 0.1rem solid;
-}
-
-.btn-color-1:hover,
-.btn-color-2:hover {
-    cursor: pointer;
+/* ΧΡΩΜΑΤΙΣΜΟΙ / ΕΙΔΙΚΑ BUTTONS */
+.btn-color-1,
+.btn-color-2 {
+  border: rgb(53, 53, 53) 0.1rem solid;
 }
 
 .btn-color-1,
 .btn-color-2:hover {
-    background: rgb(53, 53, 53);
-    color: white;
+  background: rgb(53, 53, 53);
+  color: white;
 }
 
 .btn-color-1:hover {
-    background: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
 }
 
 .btn-color-2 {
-    background: none;
-    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
+  background: none;
+  -webkit-tap-highlight-color: transparent; /* iOS fix */
+  color: black;
 }
 
 .btn-color-2:hover {
-    border: rgb(255, 255, 255) 0.1rem solid;
+  border: rgb(255, 255, 255) 0.1rem solid;
 }
 
-.btn-container {
-    gap: 1rem;
-
-}
-
-input[type="submit"] {
-  -webkit-appearance: none;
-  appearance: none;
-  /* Include all your .btn styles here */
-}
-
-a {
-  color: inherit; /* Inherits text color from parent */
-  text-decoration: none;
+/* ΑΦΗ / FOCUS ΕΜΦΑΣΗ */
+.btn:focus,
+input:focus,
+textarea:focus {
+  outline: none;
   -webkit-tap-highlight-color: transparent;
 }
+
 
 /* ABOUT SECTION */
 
