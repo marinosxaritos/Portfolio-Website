@@ -233,6 +233,7 @@ section {
 /* BUTTONS */
 
 .btn-container {
+    display: -webkit-flex; /* Safari prefix */
     display: flex;
     justify-content: center;
     gap: 1rem;
@@ -240,6 +241,7 @@ section {
 
 .btn {
     font-weight: 600;
+    -webkit-transition: all 400ms ease; /* Safari prefix */
     transition: all 400ms ease;
     padding: 1rem;
     width: 8rem;
@@ -250,7 +252,7 @@ section {
     border: rgb(53, 53, 53) 0.1rem solid;
 }
 
-.btn-color-1:hover
+.btn-color-1:hover,
 .btn-color-2:hover {
     cursor: pointer;
 }
@@ -267,15 +269,28 @@ section {
 
 .btn-color-2 {
     background: none;
+    -webkit-tap-highlight-color: transparent; /* Remove blue tap highlight */
 }
 
 .btn-color-2:hover {
     border: rgb(255, 255, 255) 0.1rem solid;
 }
 
-.btn-conainer {
+.btn-container {
     gap: 1rem;
 
+}
+
+input[type="submit"] {
+  -webkit-appearance: none;
+  appearance: none;
+  /* Include all your .btn styles here */
+}
+
+a {
+  color: inherit; /* Inherits text color from parent */
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* ABOUT SECTION */
@@ -428,6 +443,11 @@ section {
     color: black;
     border-color: rgb(163, 163, 163);
 
+  }
+
+  img {
+    -webkit-object-fit: cover; /* Fallback */
+    object-fit: cover;
   }
 
   /* CONTACT SECTION */
