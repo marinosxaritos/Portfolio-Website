@@ -92,6 +92,13 @@
         
     }
     
+    #about .title {
+      
+      margin-bottom: 2rem;
+    }
+
+    
+
     .section__text__p2 {
         font-size: 1.3rem;
         
