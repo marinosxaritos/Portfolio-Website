@@ -5,6 +5,38 @@ function toggleMenu() {
     icon.classList.toggle("icon");
 }
 
+document.addEventListener('DOMContentLoaded', function() {
+    const flipper = document.querySelector('.flipper');
+    const picContainer = document.querySelector('.section__pic-container');
+    
+    function doAutoFlip() {
+      flipper.style.transition = 'transform 0.8s ease-in-out';
+      flipper.style.transform = 'rotateY(180deg)';
+      
+      setTimeout(() => {
+        flipper.style.transform = 'rotateY(0)';
+        
+        // Μετά το auto-flip, ενεργοποιούμε το hover effect
+        setTimeout(() => {
+          flipper.style.transition = 'transform 0.6s ease';
+          picContainer.addEventListener('mouseenter', doHoverFlip);
+          picContainer.addEventListener('mouseleave', resetFlip);
+        }, 1000);
+      }, 1000);
+    }
+    
+    function doHoverFlip() {
+      flipper.style.transform = 'rotateY(180deg)';
+    }
+    
+    function resetFlip() {
+      flipper.style.transform = 'rotateY(0)';
+    }
+    
+    // Αρχικό auto-flip με καθυστέρηση 1.6s
+    setTimeout(doAutoFlip, 1600);
+  });
+
 const codeLines = [
     "<tspan class='keyword'>while</tspan>(<tspan class='variable'>alive</tspan>){", 
     "<tspan x='20' dy='30' class='variable'>opportunity</tspan> <tspan class='symbol'>=</tspan> <tspan class='function'>new</tspan> <tspan class='function'>Opportunity</tspan>();", 
