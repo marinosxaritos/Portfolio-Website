@@ -9,33 +9,50 @@ document.addEventListener('DOMContentLoaded', function() {
     const flipper = document.querySelector('.flipper');
     const picContainer = document.querySelector('.section__pic-container');
     
+    if (!flipper || !picContainer) return;
+
+    // Auto-flip function
     function doAutoFlip() {
-      flipper.style.transition = 'transform 0.8s ease-in-out';
-      flipper.style.transform = 'rotateY(180deg)';
-      
-      setTimeout(() => {
-        flipper.style.transform = 'rotateY(0)';
+        flipper.style.transition = 'transform 1s ease-in-out';
+        flipper.style.transform = 'rotateY(180deg)';
         
-        // Μετά το auto-flip, ενεργοποιούμε το hover effect
         setTimeout(() => {
-          flipper.style.transition = 'transform 0.6s ease';
-          picContainer.addEventListener('mouseenter', doHoverFlip);
-          picContainer.addEventListener('mouseleave', resetFlip);
+            flipper.style.transform = 'rotateY(0)';
+            initHoverAndTouch(); // Ενεργοποίηση hover/touch μετά το auto-flip
         }, 1000);
-      }, 1000);
     }
-    
-    function doHoverFlip() {
-      flipper.style.transform = 'rotateY(180deg)';
+
+    // Ενεργοποίηση hover (desktop) και touch (mobile)
+    function initHoverAndTouch() {
+        // Hover για desktop
+        picContainer.addEventListener('mouseenter', () => {
+            flipper.style.transform = 'rotateY(180deg)';
+        });
+        
+        picContainer.addEventListener('mouseleave', () => {
+            flipper.style.transform = 'rotateY(0)';
+        });
+
+        // Touch για mobile
+        picContainer.addEventListener('click', () => {
+            if (window.matchMedia('(max-width: 767px)').matches) {
+                const isFlipped = flipper.style.transform.includes('180deg');
+                flipper.style.transform = isFlipped ? 'rotateY(0)' : 'rotateY(180deg)';
+            }
+        });
     }
-    
-    function resetFlip() {
-      flipper.style.transform = 'rotateY(0)';
+
+    // Αρχικό auto-flip (μόνο σε desktop)
+    if (!window.matchMedia('(max-width: 767px)').matches) {
+        setTimeout(doAutoFlip, 1600);
+    } else {
+        setTimeout(doAutoFlip, 400);
     }
-    
-    // Αρχικό auto-flip με καθυστέρηση 1.6s
-    setTimeout(doAutoFlip, 1600);
-  });
+});
+
+  
+
+  
 
 const codeLines = [
     "<tspan class='keyword'>while</tspan>(<tspan class='variable'>alive</tspan>){", 
