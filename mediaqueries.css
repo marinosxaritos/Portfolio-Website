@@ -1,204 +1,193 @@
 @media screen and (max-width: 1400px) {
-    #profile {
-      height: 83vh;
-      margin-bottom: 6rem;
-    }
-    .about-containers {
-      flex-wrap: wrap;
-    }
-    #contact,
-    #projects {
-      height: fit-content;
-    }
+  #profile {
+    height: 83vh;
+    margin-bottom: 6rem;
   }
-  
-  @media screen and (max-width: 1200px) {
-    #desktop-nav {
-      display: none;
-    }
-    #hamburger-nav {
-      display: flex;
-    }
-    #experience,
-    .experience-details-container {
-      margin-top: 2rem;
-    }
-    #profile,
-    .section-container {
-      display: block;
-    }
-    .arrow {
-      display: none;
-    }
-    section,
-    .section-container {
-      height: fit-content;
-    }
-    section {
-      margin: 0 5%;
-    }
-    .section__pic-container {
-      width: 275px;
-      height: 275px;
-      margin: 0 auto 2rem;
-    }
-    .about-containers {
-      margin-top: 0;
-    }
+  .about-containers {
+    flex-wrap: wrap;
   }
-  
-  @media screen and (max-width: 600px) {
-    /* Γενικά styles */
-    #contact,
-    footer {
-        height: auto; /* Πιο ευέλικτο από 40vh */
-        min-height: 40vh;
-        padding: 2rem 0;
-    }
-    
-    #profile {
-        height: auto;
-        min-height: 83vh;
-        margin: 2rem 0;
-        gap: 1rem; /* Αυξημένο κενό */
-        flex-direction: column;
-        padding: 0 1rem; /* Πλευρικό padding */
-    }
-    
-    /* Ειδικά για την εικόνα προφίλ */
-    .section__pic-container {
-        width: 65vw; /* Πιο ευέλικτο από σταθερό pixel */
-        max-width: 250px;
-        height: 65vw;
-        max-height: 250px;
-        margin: 0 auto 1.5rem; /* Κενό κάτω από την εικόνα */
-        perspective: none;
-    }
-    
-    
-    /* Κείμενο προφίλ */
-    .section__text {
-        text-align: center;
-        
-    }
-    
-    .section__text__p1 {
-        
-        font-size: 1.1rem;
-    }
-    
-    .title {
-        font-size: 2rem;
-        
-    }
-    
-    #about .title {
-      
-      margin-bottom: 2rem;
-    }
-
-    
-
-    .section__text__p2 {
-        font-size: 1.3rem;
-        
-    }
-    
-    /* Υπόλοιπα adjustments */
-    article {
-        font-size: 1rem;
-    }
-    
-    footer nav {
-        height: fit-content;
-        
-    }
-    
-    .about-containers,
-    .contact-info-upper-container,
-    .btn-container {
-        flex-wrap: wrap;
-        gap: 1rem;
-    }
-    
-    .contact-info-container {
-        margin: 0;
-    }
-    
-    .contact-info-container p,
-    .nav-links li a {
-        font-size: 1rem;
-    }
-    
-    .experience-sub-title {
-        font-size: 1.25rem;
-    }
-    
-    .logo {
-        font-size: 1.5rem;
-    }
-    
-    .nav-links {
-        flex-direction: column;
-        gap: 0.75rem;
-        text-align: center;
-    }
-    
-    .text-container {
-        text-align: center; /* Καλύτερο από justify για mobile */
-    }
-    
-    
+  #contact,
+  #projects {
+    height: fit-content;
+  }
 }
 
-
-  @media screen and (max-width: 768px) {
-    .laptop {
-      width: 90%; /* Χρήση ποσοστών για καλύτερη προσαρμογή */
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    }
-  
-    .laptop::before {
-      width: 100px;
-      height: 6px;
-      border-radius: 3px;
-    }
-  
-    .laptop-screen {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-  
-    .laptop-screen video {
-      width: 100%;
-      height: auto;
-    }
+@media screen and (max-width: 1200px) {
+  #desktop-nav {
+    display: none;
   }
-  
-  @media screen and (max-width: 480px) {
-    .laptop {
-      width: 95%;
-    }
-  
-    .laptop::before {
-      width: 80px;
-    }
+  #hamburger-nav {
+    display: flex;
+  }
+  #experience,
+  .experience-details-container {
+    margin-top: 2rem;
+  }
+  #profile,
+  .section-container {
+    display: block;
+  }
+  .arrow {
+    display: none;
+  }
+  section,
+  .section-container {
+    height: fit-content;
+  }
+  section {
+    margin: 0 5%;
+  }
+  .section__pic-container {
+    width: 275px;
+    height: 275px;
+    margin: 0 auto 2rem;
+  }
+  .about-containers {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  /* Γενικά styles */
+  #contact,
+  footer {
+    height: auto; 
+    min-height: 40vh;
+    padding: 2rem 0;
   }
 
-  @media (max-width: 767px) {
-    .section__pic-container {
-        perspective: 1000px !important; /* Ενεργοποίηση 3D */
-        touch-action: manipulation; /* Βελτιστοποίηση touch */
-    }
-    
-    .flipper {
-        transform-style: preserve-3d !important;
-    }
-    
-    .front, .back {
-        backface-visibility: hidden !important;
-    }
+  #profile {
+    height: auto;
+    min-height: 83vh;
+    margin: 2rem 0;
+    gap: 1rem; 
+    flex-direction: column;
+    padding: 0 1rem; 
+  }
+
+  /* Ειδικά για την εικόνα προφίλ */
+  .section__pic-container {
+    width: 65vw; 
+    max-width: 250px;
+    height: 65vw;
+    max-height: 250px;
+    margin: 0 auto 1.5rem; 
+    perspective: none;
+  }
+
+  /* Κείμενο προφίλ */
+  .section__text {
+    text-align: center;
+  }
+
+  .section__text__p1 {
+    font-size: 1.1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  #about .title {
+    margin-bottom: 2rem;
+  }
+
+  .section__text__p2 {
+    font-size: 1.3rem;
+  }
+
+  /* Υπόλοιπα adjustments */
+  article {
+    font-size: 1rem;
+  }
+
+  footer nav {
+    height: fit-content;
+  }
+
+  .about-containers,
+  .contact-info-upper-container,
+  .btn-container {
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .contact-info-container {
+    margin: 0;
+  }
+
+  .contact-info-container p,
+  .nav-links li a {
+    font-size: 1rem;
+  }
+
+  .experience-sub-title {
+    font-size: 1.25rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .text-container {
+    text-align: center; 
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .laptop {
+    width: 90%; 
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  .laptop::before {
+    width: 100px;
+    height: 6px;
+    border-radius: 3px;
+  }
+
+  .laptop-screen {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+  }
+
+  .laptop-screen video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .laptop {
+    width: 95%;
+  }
+
+  .laptop::before {
+    width: 80px;
+  }
+}
+
+@media (max-width: 767px) {
+  .section__pic-container {
+    perspective: 1000px !important; 
+    touch-action: manipulation; 
+  }
+
+  .flipper {
+    transform-style: preserve-3d !important;
+  }
+
+  .front,
+  .back {
+    backface-visibility: hidden !important;
+  }
 }
