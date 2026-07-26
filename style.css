@@ -766,3 +766,36 @@ video {
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
   }
+
+  /* =========================================
+   MOBILE: ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ SLIDER & STACK
+   ========================================= */
+@media screen and (max-width: 1024px) {
+  
+  /* Κρύβουμε τα βελάκια στο κινητό/tablet */
+  .slider-btn {
+    display: none !important;
+  }
+
+  /* Απενεργοποιούμε το οριζόντιο scroll και το slider */
+  .projects-slider {
+    display: flex;
+    flex-direction: column !important; /* Τα βάζει το ένα κάτω από το άλλο */
+    overflow-x: visible;
+    scroll-snap-type: none;
+    gap: 2rem;
+  }
+
+  /* Η κάθε σελίδα/project πιάνει όλο το πλάτος και στοκάρεται κανονικά */
+  .slide-page {
+    flex: 0 0 100%;
+    min-width: 100%;
+  }
+
+  /* Διασφαλίζουμε ότι τα εσωτερικά containers των projects 
+     θα γίνουν κι αυτά column για να μην διχάζονται */
+  .slide-page .about-containers {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
