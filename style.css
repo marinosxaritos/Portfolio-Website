@@ -697,3 +697,72 @@ video {
     animation: fadeIn 3.3s ease-out forwards;
   }
 }
+
+/* =========================================
+   PROJECTS SLIDER - PAGE BY PAGE
+   ========================================= */
+   .slider-wrapper {
+    position: relative;
+    width: 100%;
+  }
+  
+  .projects-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    width: 100%;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  .projects-slider::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+  }
+  
+  /* Η κάθε σελίδα του slider πιάνει ακριβώς το 100% του πλάτους */
+  .slide-page {
+    flex: 0 0 100%;
+    min-width: 100%;
+    scroll-snap-align: start;
+  }
+  
+  /* Στιλ για τα βελάκια */
+  .slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: transparent;
+    color: black;
+    border: none;
+    font-size: 3rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    padding: 10px;
+  }
+  
+  .slider-btn:hover {
+    color: grey;
+    transform: translateY(-50%) scale(1.1);
+  }
+  
+  .prev-btn { left: -5rem; }
+  .next-btn { right: -5rem; }
+  
+  /* Responsive Βελάκια */
+  @media screen and (max-width: 1200px) {
+    .prev-btn { left: -1rem; }
+    .next-btn { right: -1rem; }
+    .slider-btn {
+      background: rgba(255, 255, 255, 0.9); 
+      border-radius: 50%;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+  }

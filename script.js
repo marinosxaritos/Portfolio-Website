@@ -127,3 +127,19 @@ function resetAnimation() {
 }
 
 typeCode();
+
+// =========================================
+// PROJECTS SLIDER FUNCTIONALITY
+// =========================================
+function slideProjects(direction) {
+  const slider = document.querySelector('.projects-slider');
+  if (!slider) return;
+  
+  // Σκρολάρει ακριβώς 1 ολόκληρη σελίδα
+  const scrollAmount = slider.clientWidth; 
+  
+  slider.scrollBy({ 
+    left: scrollAmount * direction, 
+    behavior: 'smooth' 
+  });
+}
