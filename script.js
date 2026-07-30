@@ -128,6 +128,7 @@ function resetAnimation() {
 
 typeCode();
 
+
 /* =========================================
    PROJECTS SLIDER FUNCTIONALITY
    ========================================= */
@@ -144,6 +145,7 @@ function slideProjects(direction) {
   });
 }
 
+
 /* =========================================
    BLOG SLIDER NAVIGATION
    ========================================= */
@@ -158,8 +160,35 @@ function slideBlog(direction) {
   });
 }
 
+
 /* =========================================
-   AUTO-SCROLL & HIGHLIGHT ΓΙΑ ΤΑ ΑΡΘΡΑ
+   MODAL ΓΙΑ ΤΟ BLOG (CRAFT DOCS)
+   ========================================= */
+function openModal(modalId) {
+  // Ανοίγει το επιλεγμένο παράθυρο
+  document.getElementById(modalId).style.display = "flex";
+  // Κλειδώνει το background ώστε να μην μπορείς να κάνεις scroll τη σελίδα από πίσω
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal(modalId) {
+  // Κλείνει το παράθυρο
+  document.getElementById(modalId).style.display = "none";
+  // Ξεκλειδώνει το background
+  document.body.style.overflow = "auto";
+}
+
+// Αν ο χρήστης κάνει κλικ στο σκοτεινό φόντο έξω από το iframe, το παράθυρο κλείνει
+window.onclick = function(event) {
+  if (event.target.classList.contains('craft-modal')) {
+    event.target.style.display = "none";
+    document.body.style.overflow = "auto";
+  }
+}
+
+
+/* =========================================
+   AUTO-SCROLL & HIGHLIGHT ΓΙΑ ΤΑ ΑΡΘΡΑ (ΑΠΟ LINK)
    ========================================= */
 window.onload = function() {
   var currentHash = window.location.hash;
@@ -172,14 +201,14 @@ window.onload = function() {
     targetCard = document.getElementById('blog-figma');
   }
 
-  // Αν βρεθεί η κάρτα, κάνουμε scroll και highlight
+  // Αν βρεθεί η κάρτα, κάνουμε scroll και highlight (ΧΩΡΙΣ να ανοίξουμε το modal)
   if (targetCard) {
     // 1. Κάνουμε smooth scroll ώστε η κάρτα να έρθει ακριβώς στο κέντρο της οθόνης
     targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-    // 2. Προσθέτουμε ένα εφέ (π.χ. ένα ωραίο border ή σκιά) για να ξεχωρίζει
+    // 2. Προσθέτουμε το εφέ highlight για να τραβήξει την προσοχή
     targetCard.style.transition = "all 0.5s ease";
-    targetCard.style.borderColor = "#222"; // Γίνεται πιο έντονο το περίγραμμα
+    targetCard.style.borderColor = "#222"; 
     targetCard.style.boxShadow = "0 0 20px rgba(0,0,0,0.2)";
     targetCard.style.transform = "scale(1.03)";
 
