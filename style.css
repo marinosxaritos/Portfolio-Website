@@ -960,43 +960,68 @@ video {
 }
 
 /* =========================================
-   ΔΙΟΡΘΩΣΗ HAMBURGER MENU (MOBILE)
+   MODERN FULL-SCREEN HAMBURGER MENU (MOBILE)
    ========================================= */
-   .menu-links {
-    position: absolute;
-    top: 120%; /* Εμφανίζεται ακριβώς κάτω από το εικονίδιο */
-    right: 0;
-    background-color: white !important; /* Λευκό φόντο για να κρύβει την εικόνα από πίσω */
-    z-index: 9999 !important; /* Το φέρνει στην κορυφή */
-    border-radius: 15px; /* Στρογγυλεμένες γωνίες */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Μια όμορφη και μοντέρνα σκιά */
-    width: max-content;
-    overflow: hidden;
-    max-height: 0;
-    padding: 0;
-    transition: all 0.3s ease-in-out;
+   .hamburger-menu {
+    position: relative;
   }
   
+  /* Το μενού πιάνει όλη την οθόνη αλλά είναι κρυφό (opacity: 0) */
+  .menu-links {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.98) !important; /* Λευκό background με ελάχιστη διαφάνεια */
+    z-index: 9999 !important; /* Πάνω από όλα, ακόμα και από το navbar */
+    
+    /* Κεντράρουμε τα πάντα απόλυτα */
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem; /* Απόσταση μεταξύ των επιλογών */
+    
+    /* Smooth εφέ εμφάνισης */
+    opacity: 0;
+    pointer-events: none; /* Δεν πατιέται όσο είναι κρυφό */
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  /* Όταν το μενού είναι ανοιχτό (.open) */
   .menu-links.open {
-    max-height: 400px !important; 
-    padding: 1rem 0 !important; /* Δίνει αέρα πάνω-κάτω όταν ανοίγει */
+    opacity: 1 !important;
+    max-height: 100vh !important; /* Ακυρώνει το παλιό max-height */
+    pointer-events: auto; /* Ενεργοποιεί τα κλικ */
   }
   
+  /* Στιλ για τα στοιχεία της λίστας */
   .menu-links li {
     list-style: none;
-    padding: 0.8rem 2rem;
-    text-align: center; 
+    width: 100%;
+    text-align: center;
   }
   
+  /* Μεγάλα, ευανάγνωστα γράμματα για εύκολο πάτημα με το δάχτυλο */
   .menu-links li a {
     text-decoration: none;
     color: black;
-    font-size: 1.3rem;
-    font-weight: 500;
-    display: block;
-    transition: color 0.3s ease;
+    font-size: 2rem; /* Πιο μεγάλο font size για full screen */
+    font-weight: 600;
+    display: inline-block;
+    padding: 1rem 2rem;
+    transition: transform 0.2s ease, color 0.2s ease;
   }
   
   .menu-links li a:hover {
     color: grey;
+    transform: scale(1.1); /* Μικρό εφέ μεγέθυνσης στο hover/tap */
+  }
+  
+  /* Εξασφαλίζουμε ότι το εικονίδιο της (X) ή των γραμμών θα μένει 
+     ορατό και πάνω από το full-screen μενού για να μπορεί να το κλείσει */
+  .hamburger-icon {
+    z-index: 10000 !important; 
+    position: relative;
   }
