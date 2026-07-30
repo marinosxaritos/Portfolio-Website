@@ -182,3 +182,24 @@ function slideBlog(direction) {
     behavior: 'smooth'
   });
 }
+
+/* =========================================
+   AUTO-OPEN MODAL ΑΠΟ ΤΟ URL (ANCHOR LINKS)
+   ========================================= */
+   window.onload = function() {
+    // Διαβάζει τι υπάρχει μετά το # στο URL
+    var currentHash = window.location.hash;
+  
+    // Αν το link τελειώνει σε #grab, ανοίγει το Modal της Grab (craft-modal-1)
+    if (currentHash === '#grab') {
+      openModal('craft-modal-1');
+      // Προαιρετικά: Κάνει και scroll στο blog section για να φαίνεται ωραία από πίσω
+      document.getElementById('blog').scrollIntoView(); 
+    }
+    
+    // Αν το link τελειώνει σε #figma, ανοίγει το Modal του Figma (craft-modal-2)
+    else if (currentHash === '#figma') {
+      openModal('craft-modal-2');
+      document.getElementById('blog').scrollIntoView();
+    }
+  };
