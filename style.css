@@ -767,57 +767,7 @@ video {
     }
   }
   
-  /* =========================================
-   MOBILE RESPONSIVE: SWIPEABLE CAROUSELS (PROJECTS & BLOG)
-   ========================================= */
-@media screen and (max-width: 1024px) {
-  /* Κρύβουμε τα βελάκια σε projects και blog (δεν χρειάζονται στο swipe) */
-  .slider-btn {
-    display: none !important;
-  }
 
-  /* PROJECTS: Επιτρέπουμε το οριζόντιο swipe */
-  .projects-slider {
-    display: flex;
-    flex-direction: row !important; /* Μένουν οριζόντια! */
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 1.5rem;
-    padding: 1rem;
-  }
-
-  /* BLOG: Επιτρέπουμε το οριζόντιο swipe */
-  .blog-slider {
-    display: flex;
-    flex-direction: row !important; /* Μένουν οριζόντια! */
-    overflow-x: auto !important;
-    scroll-snap-type: x mandatory !important;
-    gap: 1.5rem;
-    padding: 1rem;
-  }
-
-  /* Οι σελίδες των projects μικραίνουν ελαφρώς για να φαίνεται 
-     στο πλάι ότι υπάρχει κι επόμενο slide (δίνει hint για swipe) */
-  .slide-page {
-    flex: 0 0 88% !important;
-    min-width: 88% !important;
-    scroll-snap-align: center !important;
-  }
-
-  /* Οι κάρτες του blog μικραίνουν κι αυτές αντίστοιχα για το κινητό */
-  .blog-card {
-    flex: 0 0 85% !important;
-    max-width: 85% !important;
-    scroll-snap-align: center !important;
-  }
-
-  /* Διασφαλίζουμε ότι τα εσωτερικά στοιχεία των projects 
-     (αν έχεις 2 projects στο ίδιο slide) θα στοκάρονται σωστά */
-  .slide-page .about-containers {
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-}
   
   /* =========================================
    MOBILE RESPONSIVE: SWIPEABLE CAROUSELS (PROJECTS & BLOG)
@@ -1008,3 +958,45 @@ video {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+/* =========================================
+   ΔΙΟΡΘΩΣΗ HAMBURGER MENU (MOBILE)
+   ========================================= */
+   .menu-links {
+    position: absolute;
+    top: 120%; /* Εμφανίζεται ακριβώς κάτω από το εικονίδιο */
+    right: 0;
+    background-color: white !important; /* Λευκό φόντο για να κρύβει την εικόνα από πίσω */
+    z-index: 9999 !important; /* Το φέρνει στην κορυφή */
+    border-radius: 15px; /* Στρογγυλεμένες γωνίες */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Μια όμορφη και μοντέρνα σκιά */
+    width: max-content;
+    overflow: hidden;
+    max-height: 0;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .menu-links.open {
+    max-height: 400px !important; 
+    padding: 1rem 0 !important; /* Δίνει αέρα πάνω-κάτω όταν ανοίγει */
+  }
+  
+  .menu-links li {
+    list-style: none;
+    padding: 0.8rem 2rem;
+    text-align: center; 
+  }
+  
+  .menu-links li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.3rem;
+    font-weight: 500;
+    display: block;
+    transition: color 0.3s ease;
+  }
+  
+  .menu-links li a:hover {
+    color: grey;
+  }
