@@ -766,36 +766,230 @@ video {
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     }
   }
-
+  
   /* =========================================
-   MOBILE: ΑΠΕΝΕΡΓΟΠΟΙΗΣΗ SLIDER & STACK
+   MOBILE RESPONSIVE: SWIPEABLE CAROUSELS (PROJECTS & BLOG)
    ========================================= */
 @media screen and (max-width: 1024px) {
-  
-  /* Κρύβουμε τα βελάκια στο κινητό/tablet */
+  /* Κρύβουμε τα βελάκια σε projects και blog (δεν χρειάζονται στο swipe) */
   .slider-btn {
     display: none !important;
   }
 
-  /* Απενεργοποιούμε το οριζόντιο scroll και το slider */
+  /* PROJECTS: Επιτρέπουμε το οριζόντιο swipe */
   .projects-slider {
     display: flex;
-    flex-direction: column !important; /* Τα βάζει το ένα κάτω από το άλλο */
-    overflow-x: visible;
-    scroll-snap-type: none;
-    gap: 2rem;
+    flex-direction: row !important; /* Μένουν οριζόντια! */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1.5rem;
+    padding: 1rem;
   }
 
-  /* Η κάθε σελίδα/project πιάνει όλο το πλάτος και στοκάρεται κανονικά */
+  /* BLOG: Επιτρέπουμε το οριζόντιο swipe */
+  .blog-slider {
+    display: flex;
+    flex-direction: row !important; /* Μένουν οριζόντια! */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  /* Οι σελίδες των projects μικραίνουν ελαφρώς για να φαίνεται 
+     στο πλάι ότι υπάρχει κι επόμενο slide (δίνει hint για swipe) */
   .slide-page {
-    flex: 0 0 100%;
-    min-width: 100%;
+    flex: 0 0 88% !important;
+    min-width: 88% !important;
+    scroll-snap-align: center !important;
   }
 
-  /* Διασφαλίζουμε ότι τα εσωτερικά containers των projects 
-     θα γίνουν κι αυτά column για να μην διχάζονται */
+  /* Οι κάρτες του blog μικραίνουν κι αυτές αντίστοιχα για το κινητό */
+  .blog-card {
+    flex: 0 0 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center !important;
+  }
+
+  /* Διασφαλίζουμε ότι τα εσωτερικά στοιχεία των projects 
+     (αν έχεις 2 projects στο ίδιο slide) θα στοκάρονται σωστά */
   .slide-page .about-containers {
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.5rem;
   }
+}
+  
+  /* =========================================
+   MOBILE RESPONSIVE: SWIPEABLE CAROUSELS (PROJECTS & BLOG)
+   ========================================= */
+@media screen and (max-width: 1024px) {
+  /* Κρύβουμε τα βελάκια (δεν χρειάζονται στο swipe) */
+  .slider-btn {
+    display: none !important;
+  }
+
+  /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΑ PROJECTS --- */
+  .projects-slider {
+    display: flex;
+    flex-direction: row !important; /* Μένουν οριζόντια! */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  /* MAGIC TRICK: "Εξαφανίζουμε" τα περιτυλίγματα (pages) στο κινητό 
+     ώστε όλες οι κάρτες (details-container) να μπουν σε μία σειρά */
+  .slide-page,
+  .slide-page .about-containers {
+    display: contents !important;
+  }
+
+  /* Τώρα, η κάθε κάρτα project λειτουργεί αυτόνομα και γίνεται swipeable */
+  #projects .details-container {
+    flex: 0 0 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center !important;
+    margin: 0; /* Βεβαιωνόμαστε ότι δεν έχουν περιττά κενά */
+  }
+
+
+  /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΟ BLOG --- */
+  .blog-slider {
+    display: flex;
+    flex-direction: row !important; /* Μένουν οριζόντια! */
+    overflow-x: auto !important;
+    scroll-snap-type: x mandatory !important;
+    gap: 1.5rem;
+    padding: 1rem;
+  }
+
+  /* Οι κάρτες του blog μικραίνουν κι αυτές για το κινητό */
+  .blog-card {
+    flex: 0 0 85% !important;
+    max-width: 85% !important;
+    scroll-snap-align: center !important;
+  }
+}
+
+ /* =========================================
+   BLOG SLIDER & CARDS (ΟΡΙΖΟΝΤΙΟ CAROUSEL)
+   ========================================= */
+.blog-slider {
+  display: flex;
+  gap: 2rem; /* Το κενό ανάμεσα στις κάρτες */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  width: 100%;
+  padding: 1rem;
+  -ms-overflow-style: none; /* Κρύβει το scrollbar σε IE/Edge */
+  scrollbar-width: none; /* Κρύβει το scrollbar σε Firefox */
+}
+
+.blog-slider::-webkit-scrollbar {
+  display: none; /* Κρύβει το scrollbar σε Chrome/Safari */
+}
+
+.blog-card {
+  flex: 0 0 450px; /* ΕΔΩ ΤΙΣ ΜΕΓΑΛΩΝΟΥΜΕ (σταθερό πλάτος 450px) */
+  scroll-snap-align: center; /* Κουμπώνουν στο κέντρο όταν σκρολάρεις */
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding: 1.5rem !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: white;
+}
+
+.blog-card:hover {
+  transform: scale(1.02);
+}
+
+.blog-cover-img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+/* Διόρθωση κουμπιού για να είναι πάντα τέρμα κάτω και συμμετρικό */
+.blog-card .btn-container {
+  margin-top: auto; 
+  padding-top: 1.5rem;
+}
+
+.blog-card .project-btn {
+  width: auto !important;
+  padding: 1rem 2rem;
+  white-space: nowrap;
+  font-size: 1rem;
+  border-radius: 2rem;
+}
+
+
+
+/* =========================================
+   MODAL OVERLAYS (POP-UPS)
+   ========================================= */
+.craft-modal {
+  display: none; /* Κρυφό αρχικά */
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7); /* Σκοτεινό φόντο */
+  backdrop-filter: blur(4px);
+  justify-content: center;
+  align-items: center;
+}
+
+.craft-modal-content {
+  position: relative;
+  width: 90%;
+  max-width: 1000px;
+  height: 90%;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  overflow: hidden;
+  animation: modalFadeIn 0.3s ease;
+}
+
+.craft-iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2.5rem;
+  color: #333;
+  cursor: pointer;
+  z-index: 10000;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.close-btn:hover {
+  color: red;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }

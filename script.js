@@ -143,3 +143,42 @@ function slideProjects(direction) {
     behavior: 'smooth' 
   });
 }
+
+/* =========================================
+   MODAL ΓΙΑ ΤΟ BLOG (CRAFT DOCS)
+   ========================================= */
+   function openModal(modalId) {
+    // Ανοίγει το επιλεγμένο παράθυρο
+    document.getElementById(modalId).style.display = "flex";
+    // Κλειδώνει το background ώστε να μην μπορείς να κάνεις scroll τη σελίδα από πίσω
+    document.body.style.overflow = "hidden";
+  }
+  
+  function closeModal(modalId) {
+    // Κλείνει το παράθυρο
+    document.getElementById(modalId).style.display = "none";
+    // Ξεκλειδώνει το background
+    document.body.style.overflow = "auto";
+  }
+  
+  // Προαιρετικό: Αν ο χρήστης κάνει κλικ στο σκοτεινό φόντο έξω από το iframe, το παράθυρο κλείνει
+  window.onclick = function(event) {
+    if (event.target.classList.contains('craft-modal')) {
+      event.target.style.display = "none";
+      document.body.style.overflow = "auto";
+    }
+  }
+
+  /* =========================================
+   BLOG SLIDER NAVIGATION
+   ========================================= */
+function slideBlog(direction) {
+  const container = document.getElementById('blog-slider');
+  // Το 482 είναι το μέγεθος της κάρτας (450) + το κενό gap (32)
+  const scrollAmount = 482; 
+  
+  container.scrollBy({
+    left: direction * scrollAmount,
+    behavior: 'smooth'
+  });
+}
