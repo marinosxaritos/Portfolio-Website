@@ -204,10 +204,36 @@ function slideBlog(direction) {
     }
   };
 
-  function hideLoader(iframeElement) {
-    // Βρίσκει τον loader που είναι ακριβώς δίπλα (πριν) από το iframe και τον κρύβει
-    const loader = iframeElement.previousElementSibling;
-    if (loader && loader.classList.contains('modal-loader')) {
-      loader.style.display = 'none';
-    }
+  /* =========================================
+   AUTO-SCROLL & HIGHLIGHT ΓΙΑ ΤΑ ΑΡΘΡΑ
+   ========================================= */
+window.onload = function() {
+  var currentHash = window.location.hash;
+  let targetCard = null;
+
+  // Ελέγχουμε ποιο άρθρο ζήτησε ο χρήστης από το URL
+  if (currentHash === '#grab') {
+    targetCard = document.getElementById('blog-grab');
+  } else if (currentHash === '#figma') {
+    targetCard = document.getElementById('blog-figma');
   }
+
+  // Αν βρεθεί η κάρτα, κάνουμε scroll και highlight
+  if (targetCard) {
+    // 1. Κάνουμε smooth scroll ώστε η κάρτα να έρθει ακριβώς στο κέντρο της οθόνης
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+    // 2. Προσθέτουμε ένα εφέ (π.χ. ένα ωραίο border ή σκιά) για να ξεχωρίζει
+    targetCard.style.transition = "all 0.5s ease";
+    targetCard.style.borderColor = "#222"; // Γίνεται πιο έντονο το περίγραμμα
+    targetCard.style.boxShadow = "0 0 20px rgba(0,0,0,0.2)";
+    targetCard.style.transform = "scale(1.03)";
+
+    // 3. Μετά από 2.5 δευτερόλεπτα, επαναφέρουμε την κάρτα στην αρχική της κατάσταση
+    setTimeout(() => {
+      targetCard.style.borderColor = "rgb(163, 163, 163)";
+      targetCard.style.boxShadow = "0 4px 6px rgba(0,0,0,0.1)";
+      targetCard.style.transform = "scale(1)";
+    }, 2500);
+  }
+};
