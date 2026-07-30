@@ -823,26 +823,19 @@ video {
    MOBILE RESPONSIVE: SWIPEABLE CAROUSELS (PROJECTS & BLOG)
    ========================================= */
 @media screen and (max-width: 1024px) {
-  /* Κρύβουμε τα βελάκια (δεν χρειάζονται στο swipe) */
+  /* Κρύβουμε τα βελάκια */
   .slider-btn {
     display: none !important;
   }
 
-  /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΑ PROJECTS --- */
-  .slider-wrapper {
-    width: 100vw; /* Βγαίνει λίγο έξω για να μην κάνει margin bug */
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
+  /* --- PROJECTS RESPONSIVE --- */
   .projects-slider {
     display: flex;
     flex-direction: row !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
-    gap: 1.5rem;
-    padding: 1rem 5vw !important; /* Βάζει αέρα δεξιά-αριστερά για να μη χτυπάει στην άκρη */
+    gap: 1.2rem;
+    padding: 0.5rem 0 !important; /* Αφαιρούμε περίεργα padding που σπάνε το layout */
     width: 100%;
     -ms-overflow-style: none; 
     scrollbar-width: none; 
@@ -852,51 +845,45 @@ video {
     display: none;
   }
 
-  /* "Εξαφανίζουμε" τα περιτυλίγματα (pages) */
+  /* "Εξαφανίζουμε" τα ενδιάμεσα κουτιά για να ευθυγραμμιστούν οι κάρτες */
   .slide-page,
   .slide-page .about-containers {
     display: contents !important;
   }
 
-  /* Τώρα, η κάθε κάρτα project λειτουργεί αυτόνομα */
   #projects .details-container {
-    flex: 0 0 82% !important; /* 82% αφήνει ακριβώς το 18% της επόμενης κάρτας να φαίνεται! */
-    max-width: 82% !important;
-    scroll-snap-align: center !important;
-    margin: 0; 
+    flex: 0 0 85% !important; /* 85% σημαίνει ότι το 15% της επόμενης κάρτας φαίνεται στην άκρη! */
+    max-width: 85% !important;
+    scroll-snap-align: start !important; /* Κουμπώνει όμορφα στην αρχή του section */
+    margin: 0 !important; 
+    box-sizing: border-box;
   }
 
-  /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΟ BLOG --- */
-  /* Βάζουμε το ίδιο wrapper logic και στο blog */
-  #blog .experience-details-container {
-    width: 100vw;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  .blog-slider, .about-containers {
+  /* --- BLOG RESPONSIVE --- */
+  .blog-slider, 
+  #blog .about-containers {
     display: flex;
     flex-direction: row !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
-    gap: 1.5rem;
-    padding: 1rem 5vw !important;
+    gap: 1.2rem;
+    padding: 0.5rem 0 !important;
     width: 100%;
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
 
-  .blog-slider::-webkit-scrollbar, .about-containers::-webkit-scrollbar {
+  .blog-slider::-webkit-scrollbar, 
+  #blog .about-containers::-webkit-scrollbar {
     display: none;
   }
 
-  /* Κάρτες Blog */
   .blog-card {
-    flex: 0 0 82% !important; /* 82% ώστε να "ξεπροβάλλει" η 2η κάρτα και να δείχνει ότι σκρολάρει */
-    max-width: 82% !important;
-    scroll-snap-align: center !important;
+    flex: 0 0 85% !important; /* 85% για να φαίνεται και εδώ η επόμενη κάρτα */
+    max-width: 85% !important;
+    scroll-snap-align: start !important;
     margin: 0 !important;
+    box-sizing: border-box;
   }
 }
 
