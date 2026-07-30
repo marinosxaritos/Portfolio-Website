@@ -199,7 +199,9 @@ window.onload = function() {
     targetCard = document.getElementById('blog-grab');
   } else if (currentHash === '#figma') {
     targetCard = document.getElementById('blog-figma');
-  }
+  } else if (currentHash === '#methodology') {
+    targetCard = document.getElementById('blog-methodology');
+  } 
 
   // Αν βρεθεί η κάρτα, κάνουμε scroll και highlight (ΧΩΡΙΣ να ανοίξουμε το modal)
   if (targetCard) {
