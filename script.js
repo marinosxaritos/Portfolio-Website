@@ -128,9 +128,9 @@ function resetAnimation() {
 
 typeCode();
 
-// =========================================
-// PROJECTS SLIDER FUNCTIONALITY
-// =========================================
+/* =========================================
+   PROJECTS SLIDER FUNCTIONALITY
+   ========================================= */
 function slideProjects(direction) {
   const slider = document.querySelector('.projects-slider');
   if (!slider) return;
@@ -145,31 +145,6 @@ function slideProjects(direction) {
 }
 
 /* =========================================
-   MODAL ΓΙΑ ΤΟ BLOG (CRAFT DOCS)
-   ========================================= */
-   function openModal(modalId) {
-    // Ανοίγει το επιλεγμένο παράθυρο
-    document.getElementById(modalId).style.display = "flex";
-    // Κλειδώνει το background ώστε να μην μπορείς να κάνεις scroll τη σελίδα από πίσω
-    document.body.style.overflow = "hidden";
-  }
-  
-  function closeModal(modalId) {
-    // Κλείνει το παράθυρο
-    document.getElementById(modalId).style.display = "none";
-    // Ξεκλειδώνει το background
-    document.body.style.overflow = "auto";
-  }
-  
-  // Προαιρετικό: Αν ο χρήστης κάνει κλικ στο σκοτεινό φόντο έξω από το iframe, το παράθυρο κλείνει
-  window.onclick = function(event) {
-    if (event.target.classList.contains('craft-modal')) {
-      event.target.style.display = "none";
-      document.body.style.overflow = "auto";
-    }
-  }
-
-  /* =========================================
    BLOG SLIDER NAVIGATION
    ========================================= */
 function slideBlog(direction) {
@@ -184,27 +159,6 @@ function slideBlog(direction) {
 }
 
 /* =========================================
-   AUTO-OPEN MODAL ΑΠΟ ΤΟ URL (ANCHOR LINKS)
-   ========================================= */
-   window.onload = function() {
-    // Διαβάζει τι υπάρχει μετά το # στο URL
-    var currentHash = window.location.hash;
-  
-    // Αν το link τελειώνει σε #grab, ανοίγει το Modal της Grab (craft-modal-1)
-    if (currentHash === '#grab') {
-      openModal('craft-modal-1');
-      // Προαιρετικά: Κάνει και scroll στο blog section για να φαίνεται ωραία από πίσω
-      document.getElementById('blog').scrollIntoView(); 
-    }
-    
-    // Αν το link τελειώνει σε #figma, ανοίγει το Modal του Figma (craft-modal-2)
-    else if (currentHash === '#figma') {
-      openModal('craft-modal-2');
-      document.getElementById('blog').scrollIntoView();
-    }
-  };
-
-  /* =========================================
    AUTO-SCROLL & HIGHLIGHT ΓΙΑ ΤΑ ΑΡΘΡΑ
    ========================================= */
 window.onload = function() {
