@@ -829,46 +829,74 @@ video {
   }
 
   /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΑ PROJECTS --- */
+  .slider-wrapper {
+    width: 100vw; /* Βγαίνει λίγο έξω για να μην κάνει margin bug */
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .projects-slider {
     display: flex;
-    flex-direction: row !important; /* Μένουν οριζόντια! */
+    flex-direction: row !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     gap: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 5vw !important; /* Βάζει αέρα δεξιά-αριστερά για να μη χτυπάει στην άκρη */
+    width: 100%;
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+  
+  .projects-slider::-webkit-scrollbar {
+    display: none;
   }
 
-  /* MAGIC TRICK: "Εξαφανίζουμε" τα περιτυλίγματα (pages) στο κινητό 
-     ώστε όλες οι κάρτες (details-container) να μπουν σε μία σειρά */
+  /* "Εξαφανίζουμε" τα περιτυλίγματα (pages) */
   .slide-page,
   .slide-page .about-containers {
     display: contents !important;
   }
 
-  /* Τώρα, η κάθε κάρτα project λειτουργεί αυτόνομα και γίνεται swipeable */
+  /* Τώρα, η κάθε κάρτα project λειτουργεί αυτόνομα */
   #projects .details-container {
-    flex: 0 0 85% !important;
-    max-width: 85% !important;
+    flex: 0 0 82% !important; /* 82% αφήνει ακριβώς το 18% της επόμενης κάρτας να φαίνεται! */
+    max-width: 82% !important;
     scroll-snap-align: center !important;
-    margin: 0; /* Βεβαιωνόμαστε ότι δεν έχουν περιττά κενά */
+    margin: 0; 
   }
 
-
   /* --- ΡΥΘΜΙΣΕΙΣ ΓΙΑ ΤΟ BLOG --- */
-  .blog-slider {
+  /* Βάζουμε το ίδιο wrapper logic και στο blog */
+  #blog .experience-details-container {
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .blog-slider, .about-containers {
     display: flex;
-    flex-direction: row !important; /* Μένουν οριζόντια! */
+    flex-direction: row !important;
     overflow-x: auto !important;
     scroll-snap-type: x mandatory !important;
     gap: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 5vw !important;
+    width: 100%;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
-  /* Οι κάρτες του blog μικραίνουν κι αυτές για το κινητό */
+  .blog-slider::-webkit-scrollbar, .about-containers::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Κάρτες Blog */
   .blog-card {
-    flex: 0 0 85% !important;
-    max-width: 85% !important;
+    flex: 0 0 82% !important; /* 82% ώστε να "ξεπροβάλλει" η 2η κάρτα και να δείχνει ότι σκρολάρει */
+    max-width: 82% !important;
     scroll-snap-align: center !important;
+    margin: 0 !important;
   }
 }
 
