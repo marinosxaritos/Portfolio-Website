@@ -203,3 +203,11 @@ function slideBlog(direction) {
       document.getElementById('blog').scrollIntoView();
     }
   };
+
+  function hideLoader(iframeElement) {
+    // Βρίσκει τον loader που είναι ακριβώς δίπλα (πριν) από το iframe και τον κρύβει
+    const loader = iframeElement.previousElementSibling;
+    if (loader && loader.classList.contains('modal-loader')) {
+      loader.style.display = 'none';
+    }
+  }
